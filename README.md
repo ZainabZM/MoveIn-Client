@@ -1,5 +1,5 @@
-#MOVEIN
+## MOVEIN
 
 // INSTALL IN YOUR TERMINAL
 
-npm install react-router-dom
+- npm install react-router-dom

@@ -7,6 +7,7 @@ function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   let user = {
     firstname: firstname,
     lastname: lastname,
@@ -50,18 +51,10 @@ function Register() {
 
   return (
     <div className="form">
-      <form action="" method="POST">
+      <form method="POST">
         <input
           type="text"
           name="firstname"
-          placeholder="Nom"
-          className="inputRegister"
-          required
-          onChange={(e) => setLastname(e.target.value)}
-        />
-        <input
-          type="text"
-          name="lastname"
           placeholder="Prénom"
           className="inputRegister"
           required
@@ -69,8 +62,16 @@ function Register() {
         />
         <input
           type="text"
+          name="lastname"
+          placeholder="Nom de famille"
+          className="inputRegister"
+          required
+          onChange={(e) => setLastname(e.target.value)}
+        />
+        <input
+          type="text"
           name="username"
-          placeholder="Nom d'utilisateur"
+          placeholder="Pseudo"
           className="inputRegister"
           required
           onChange={(e) => setUsername(e.target.value)}
