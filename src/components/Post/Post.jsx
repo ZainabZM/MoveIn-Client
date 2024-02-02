@@ -22,14 +22,14 @@ function Post() {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        setCategories(data); // Corrected from setCategories
+        setCategories(data);
       } catch (error) {
         console.error("Fetch error:", error);
       }
     };
 
     fetchCategories();
-  }, []); // Run this effect only once on component mount
+  }, []);
 
   const handlePost = async (e) => {
     e.preventDefault();

@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [firstname, setFirstname] = useState("");
@@ -40,7 +40,7 @@ function Register() {
       console.log("data", data);
       if (data.message) {
         alert(data.message);
-        // navigate("/login");
+        navigate("/login");
       } else {
         alert("Une erreur est survenue. Veuillez réessayer.");
       }
