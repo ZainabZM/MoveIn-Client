@@ -1,12 +1,18 @@
 import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Register from "./components/Register/Register";
+import CreatePost from "./components/Post/CreatePost";
+import Show from "./components/Post/ShowPost";
 import Login from "./components/Login/Login";
-import Post from "./components/Post/Post";
+import Home from "./components/Home/Home";
 import "./App.css";
 
 function App() {
   const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
     {
       path: "/register",
       element: <Register />,
@@ -17,7 +23,11 @@ function App() {
     },
     {
       path: "/post",
-      element: <Post />,
+      element: <CreatePost />,
+    },
+    {
+      path: "/articles/:id",
+      element: <Show />,
     },
   ]);
 

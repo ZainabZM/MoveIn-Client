@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../Register/Register.css";
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -45,7 +48,7 @@ function Login() {
         localStorage.setItem("@TokenUser", data.token);
         setShowSuccessAlert(true);
         alert("Vous êtes connecté(e)");
-        // navigate("/dashboard");
+        navigate("/");
       } else {
         setShowErrorAlert(true);
         alert("Email ou mot de passe incorrect.");
