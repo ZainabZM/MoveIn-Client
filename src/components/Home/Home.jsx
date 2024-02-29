@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import RenderPost from "../Post/RenderPost";
+import SearchBar from "../Search/SearchBar";
+import CreatePost from "../Post/CreatePost";
+
 import Navbar from "../../layouts/Navbar";
 
 function Home() {
   const [value, setValue] = useState("");
+
+  const handleSearch = (searchValue) => {
+    // Update the state with the search value
+    setValue(searchValue);
+  };
 
   console.log(value);
   return (
@@ -14,8 +22,7 @@ function Home() {
           <div className="navbar">
             <Navbar />
           </div>
-
-          <div className="filterNavContainer">{/* <NavFilter /> */}</div>
+          <div className="filterNavContainer"></div>
         </div>
         {/* <div className="showcase">
           <div className="caption">
@@ -27,7 +34,9 @@ function Home() {
 
       {/* SECTION AFFICHAGE LIEUX - START */}
       <section className="RenderPlaces">
+        <SearchBar onSearch={handleSearch} />
         <RenderPost />
+        <CreatePost />
       </section>
       {/* SECTION AFFICHAGE LIEUX - END */}
     </>

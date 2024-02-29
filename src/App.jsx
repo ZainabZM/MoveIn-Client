@@ -2,6 +2,7 @@ import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Register from "./components/Register/Register";
 import CreatePost from "./components/Post/CreatePost";
+import Profile from "./components/Profile/Profile";
 import Show from "./components/Post/ShowPost";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
@@ -28,6 +29,10 @@ function App() {
     {
       path: "/articles/:id",
       element: <Show />,
+    },
+    {
+      path: "/dashboard",
+      element: <Profile />,
     },
   ]);
 

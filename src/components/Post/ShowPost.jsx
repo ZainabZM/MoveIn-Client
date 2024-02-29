@@ -2,16 +2,13 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import Navbar from "../../layouts/Navbar";
 
-function Show({}) {
+function Show({ userId }) {
   const value = useLocation().state;
   console.log("Article ID:", value);
   const navigate = useNavigate();
-  const [user, setUser] = useState({});
   const [post, setPost] = useState(null);
 
   // ------------- RECUPERE LES DETAILS DU LIEU A AFFICHER -------------- //
-
-  //   const [userId, setUserId] = useState();
 
   const handleShow = async () => {
     console.log("Fetching article with ID:", value);
@@ -41,12 +38,20 @@ function Show({}) {
   // ------------- SUPPRIMER -------------- //
   const handleDelete = async () => {
     try {
+      const token = localStorage.getItem("@TokenUser");
+
+      if (!token) {
+        setError("Token not found");
+        return;
+      }
+
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/articles/${value}`,
         {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -67,7 +72,7 @@ function Show({}) {
 
   useEffect(() => {
     handleShow();
-  }, [value]);
+  }, []);
 
   // ------------- AFFICHE LE LIEU -------------- //
   const renderPost = () => {
@@ -102,14 +107,9 @@ function Show({}) {
         </div>
 
         <div>
-          {/* <button className="buttonShow" onClick={handleDelete}>
-            Modifier
-          </button> */}
-          {post.user_id === user.id && (
-            <button className="button" onClick={handleDelete}>
-              Supprimer
-            </button>
-          )}
+          <button className="button" onClick={handleDelete}>
+            Supprimer
+          </button>
         </div>
       </>
     );

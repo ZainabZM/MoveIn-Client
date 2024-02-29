@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 
 function Navbar() {
   const [authenticated, setAuthenticated] = useState(false);
+  const userId = localStorage.getItem("userId");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,6 +15,8 @@ function Navbar() {
       setAuthenticated(true);
     }
   }, []);
+
+  console.log("userId:", userId);
 
   const handleLogout = () => {
     localStorage.removeItem("@TokenUser");
@@ -41,11 +44,11 @@ function Navbar() {
         {authenticated ? (
           <nav>
             <div className="navbar">
-              {/* <div className="navbarLink">
-                <Link to="/dashboard" className="Link">
-                Profil
+              <div className="navbarLink">
+                <Link to={`/dashboard`} className="Link">
+                  Profil
                 </Link>
-              </div> */}
+              </div>
               <div className="navbarLink">
                 <Link className="btnLogOut" onClick={handleLogout}>
                   Déconnexion

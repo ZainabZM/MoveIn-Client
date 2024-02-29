@@ -45,7 +45,9 @@ function Login() {
       );
       const data = await response.json();
       if (data.token) {
+        console.log("data", data);
         localStorage.setItem("@TokenUser", data.token);
+        localStorage.setItem("userId", data.user.id);
         setShowSuccessAlert(true);
         alert("Vous êtes connecté(e)");
         navigate("/");
