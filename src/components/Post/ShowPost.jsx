@@ -88,7 +88,6 @@ function Show({ userId }) {
           <div>
             <div className="showLocation">
               <div className="adresse">
-                <i class="fa-solid fa-location-dot locationIcon"></i>
                 <p className="adresseInformation">{post.brand}, </p>
                 <p className="adresseInformation">{post.color}</p>
                 <p className="adresseInformation">{post.price}</p>
