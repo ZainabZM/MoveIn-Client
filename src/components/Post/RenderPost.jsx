@@ -6,7 +6,6 @@ import "./RenderPost.css";
 function RenderPost(props) {
   const [post, setPost] = useState(null);
 
-  /* ---- Récupère tous les lieux présents dans la bdd ------- */
   const getPost = async () => {
     try {
       const options = {
@@ -20,15 +19,10 @@ function RenderPost(props) {
         options
       );
       const data = await response.json();
-
-      console.log("getPost", data);
-      // Vérifie si le premier élément de data est bien un tableau
       if (Array.isArray(data["articles"])) {
-        // Si oui, places prend la valeur de celui-ci
         setPost(data["articles"]);
       } else {
-        // Si non, erreur
-        console.error("Pas un tableau:", data);
+        console.error("articles n'est pas un tableau:", data);
       }
     } catch (error) {
       console.error("Erreur:", error);

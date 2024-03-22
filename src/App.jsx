@@ -1,8 +1,9 @@
 import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Register from "./components/Register/Register";
+import Dashboard from "./components/Profile/Dashboard";
 import CreatePost from "./components/Post/CreatePost";
-import Profile from "./components/Profile/Profile";
+import EditPost from "./components/Post/EditPost";
 import Show from "./components/Post/ShowPost";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
@@ -31,8 +32,12 @@ function App() {
       element: <Show />,
     },
     {
-      path: "/dashboard",
-      element: <Profile />,
+      path: "/profile",
+      element: <Dashboard />,
+    },
+    {
+      path: "/articles/:id/edit",
+      element: <EditPost />,
     },
   ]);
 

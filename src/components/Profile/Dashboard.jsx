@@ -1,19 +1,16 @@
 import Profile from "./Profile";
 import Navbar from "../../layouts/Navbar";
+import CreatePost from "../Post/CreatePost";
+import UserArticles from "./UserArticle";
 
 function Dashboard() {
   return (
     <>
-      {/* SECTION HEADER - START */}
       <Navbar />
-      {/* SECTION HEADER - END */}
 
-      {/* SECTION DASHBOARD - START */}
-      <section className="sectionDashboard">
-        <Profile />
-      </section>
-      <section></section>
-      {/* SECTION DASHBOARD - END */}
+      <Profile />
+      <CreatePost />
+      <UserArticles />
     </>
   );
 }

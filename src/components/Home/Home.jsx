@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import RenderPost from "../Post/RenderPost";
 import SearchBar from "../Search/SearchBar";
-import CreatePost from "../Post/CreatePost";
 
 import Navbar from "../../layouts/Navbar";
 
@@ -36,7 +35,6 @@ function Home() {
       <section className="RenderPlaces">
         <SearchBar onSearch={handleSearch} />
         <RenderPost />
-        <CreatePost />
       </section>
       {/* SECTION AFFICHAGE LIEUX - END */}
     </>
