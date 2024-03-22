@@ -1,7 +1,27 @@
+@font-face {
+  font-family: "Roxborough";
+  src: url("C:\Users\zeina\Desktop\MoveInClient\src\fonts\roxborough-cf-font\RoxboroughCF-Medium.otf");
+}
+
+@font-face {
+  font-family: "Gistesy";
+  src: url("C:\Users\zeina\Desktop\MoveInClient\src\fonts\gistesy-script-font-1710485193-0\gistesy-k7w0y.ttf");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("C:\Users\zeina\Desktop\MoveInClient\src\fonts\open-sans-font-family-1710485463-0\OpenSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Hattori Hanzo";
+  src: url("C:\Users\zeina\Desktop\MoveInClient\src\fonts\hattori-hanzo-font-1710489441-0\hattori-hanzo.otf");
+}
+
 * {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Open Sans";
   padding: 0;
-  margin: 0;
+  margin: auto;
   outline: none;
   text-decoration: none;
   border: none;
@@ -11,45 +31,6 @@ body {
   background-color: rgb(197, 186, 166);
 }
 
-#root {
-  text-align: center;
-  box-sizing: border-box;
-}
-
-/* .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .card {
   padding: 2em;
 }
-
-.read-the-docs {
-  color: #888;
-} */

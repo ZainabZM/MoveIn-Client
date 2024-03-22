@@ -126,13 +126,12 @@
   padding-left: 2rem;
 }
 
-.image-place,
-img {
+.image-place img {
   overflow: hidden;
   height: 25rem;
 }
 
-img {
+.image-place img {
   object-fit: cover;
   border-radius: 5px;
 }

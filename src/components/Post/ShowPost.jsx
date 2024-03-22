@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import Navbar from "../../layouts/Navbar";
+import Render from "./RenderShow";
 
 function Show({ userId }) {
   const value = useLocation().state;
   console.log("Article ID:", value);
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
+  const [isFavorited, setIsFavorited] = useState(false);
 
   // ------------- RECUPERE LES DETAILS DU LIEU A AFFICHER -------------- //
 
@@ -70,61 +72,102 @@ function Show({ userId }) {
     }
   };
 
+  const fetchFavorites = async () => {
+    try {
+      const token = localStorage.getItem("@TokenUser");
+      if (!token) {
+        throw new Error("Token not found");
+      }
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/favorites`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      const isFavorite = data.favorites.some(
+        (favorite) => favorite.article_id === value
+      );
+      setIsFavorited(isFavorite);
+    } catch (error) {
+      console.error("Fetch favorites error:", error);
+    }
+  };
+
+  const handleFavorite = async () => {
+    try {
+      const token = localStorage.getItem("@TokenUser");
+      const user_id = localStorage.getItem("userId");
+      if (!token) {
+        setError("Token not found");
+        console.error("Token not found");
+        return;
+      }
+
+      // Define the URL and method based on whether the article is favorited or not
+      let url = `${import.meta.env.VITE_API_URL}/favorites`;
+      let method = isFavorited ? "DELETE" : "POST";
+
+      // If favorited, include the article ID in the DELETE request URL
+      if (isFavorited) {
+        url += `/${value}`;
+      }
+
+      // Include the user ID in the request body
+      const requestBody = {
+        user_id,
+        article_id: value,
+      };
+
+      const response = await fetch(url, {
+        method: method,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: method === "POST" ? JSON.stringify(requestBody) : null,
+      });
+
+      if (!response.ok) {
+        // Handle error responses from the backend
+        console.error(`HTTP error! Status: ${response.status}`);
+        return;
+      }
+
+      // Update the isFavorited state based on the current state
+      setIsFavorited((prevState) => !prevState);
+      alert(isFavorited ? "Removed from Favorites" : "Added to Favorites");
+    } catch (error) {
+      // Handle fetch errors
+      console.error("Fetch error:", error);
+    }
+  };
+
   useEffect(() => {
     handleShow();
+    fetchFavorites();
   }, []);
-
-  // ------------- AFFICHE LE LIEU -------------- //
-  const renderPost = () => {
-    if (!post) {
-      return <div>Loading...</div>;
-    }
-    return (
-      <>
-        <div className="showPlaceContainer">
-          <div>
-            <h1 className="showTitle">{post.title}</h1>
-          </div>
-          <div>
-            <div className="showLocation">
-              <div className="adresse">
-                <p className="adresseInformation">{post.brand}, </p>
-                <p className="adresseInformation">{post.color}</p>
-                <p className="adresseInformation">{post.price}</p>
-              </div>
-            </div>
-          </div>
-          <div className="showContent">
-            <div className="showFile">
-              <img src={post.file}></img>
-            </div>
-            <div className="about">
-              <h2 className="aboutTitle">À Propos</h2>
-              <p className="aboutParagraphe">{post.description}</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <button className="button" onClick={handleDelete}>
-            Supprimer
-          </button>
-        </div>
-      </>
-    );
-  };
 
   return (
     <>
-      {/* SECTION HEADER - START */}
       <div className="navbar">
         <Navbar />
       </div>
-      {/* SECTION HEADER - END */}
-
-      {/* SECTION SHOWPLACE - START */}
-      <div className="renderPlaceParent">{renderPost()}</div>
-      {/* SECTION SHOWPLACE - END */}
+      <div className="renderPlaceParent">
+        <Render
+          post={post}
+          isFavorited={isFavorited}
+          handleFavorite={handleFavorite}
+          handleDelete={handleDelete}
+        />
+      </div>
     </>
   );
 }

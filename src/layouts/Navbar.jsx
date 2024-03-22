@@ -27,7 +27,7 @@ function Navbar() {
 
   return (
     <>
-      <section className="header">
+      <div className="header">
         <div className="boxLogo">
           <div className="logo">
             <Link to="/" className="logo">
@@ -45,7 +45,7 @@ function Navbar() {
           <nav>
             <div className="navbar">
               <div className="navbarLink">
-                <Link to={`/dashboard`} className="Link">
+                <Link to={`/profile`} className="Link">
                   Profil
                 </Link>
               </div>
@@ -72,7 +72,7 @@ function Navbar() {
             </div>
           </nav>
         )}
-      </section>
+      </div>
     </>
   );
 }
