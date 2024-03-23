@@ -1,0 +1,12 @@
+.filterContainer {
+  height: 30px;
+  margin-top: 30px;
+}
+
+.filterContainer button {
+  color: rgb(77, 72, 72);
+  border: 1px solid black;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-family: Roxborough;
+}

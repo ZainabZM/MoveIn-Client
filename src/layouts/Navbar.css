@@ -1,26 +1,25 @@
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   width: 100%;
-  padding: 1.3rem;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 2;
 }
 
-.header::before {
-  content: "";
-  position: absolute;
+.navContainer {
+  position: fixed;
+  height: 9rem;
   width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(121, 83, 27, 0.577);
-  backdrop-filter: blur(50px);
-  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(238, 241, 244);
+  margin-top: 70px;
+}
+
+.navbar {
+  height: 20%;
+  width: 100%;
 }
 
 .boxLogo {
@@ -32,11 +31,11 @@
 }
 
 .logo {
-  font-size: 2rem;
-  font-weight: 700;
-  text-transform: initial;
+  font-size: 3rem;
+  font-weight: 500;
+  font-family: Gistesy;
   margin-left: 0.8rem;
-  color: white;
+  color: rgb(29, 27, 27);
 }
 
 .navbar {
@@ -48,31 +47,17 @@
 
 .Link,
 .btnLogOut {
-  font-size: 1.4rem;
-  color: white;
+  font-size: 1rem;
+  color: rgb(77, 72, 72);
   font-weight: 500;
   margin-right: 4rem;
+  text-transform: uppercase;
+  font-family: Open Sans Light;
 }
 
-#check {
-  display: none;
-}
-
-.icons {
-  cursor: pointer;
-  font-size: 2.5rem;
-  display: none;
-  position: absolute;
-  right: 5%;
-}
 .btnLogOut {
-  color: #f1f5f3;
-  font-weight: 700;
-}
-
-.btnLogOut:hover {
-  color: #745b5a;
-  font-weight: 700;
+  color: rgb(77, 72, 72);
+  /* font-weight: 700; */
 }
 
 /* BREAKPOINTS */
@@ -85,7 +70,6 @@
 @media screen and (max-width: 768px) {
   .icons {
     display: inline-flex;
-    color: white;
   }
 
   #check:checked ~ .icons #icon-menu {
@@ -101,12 +85,8 @@
   }
 
   .navbar {
-    position: absolute;
-    top: 100%;
-    left: 0;
     width: 100%;
     height: 7rem;
-    background: rgba(66, 107, 31, 0.888);
     display: flex;
     flex-direction: row;
     justify-content: center;
