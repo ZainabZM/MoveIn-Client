@@ -17,6 +17,7 @@ function Render({ post, isFavorited, handleFavorite, handleDelete }) {
             <p className="adresseInformation">{post.brand}, </p>
             <p className="adresseInformation">{post.color}</p>
             <p className="adresseInformation">{post.price}</p>
+            <p className="adresseInformation">{post.state}</p>
           </div>
         </div>
       </div>

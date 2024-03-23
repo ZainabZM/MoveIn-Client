@@ -63,3 +63,8 @@
   font-size: 25px;
   padding: 100px;
 }
+
+.renderPost {
+  display: flex;
+  margin-top: 150px;
+}
