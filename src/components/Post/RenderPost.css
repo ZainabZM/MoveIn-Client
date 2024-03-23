@@ -1,13 +1,10 @@
 /* ============> PAGES : CREATE PLACES / PLACES / RENDER PLACES / SHOW PLACES <============ */
 
 .boxPlaces {
-  height: 32rem;
-  width: 30rem;
+  height: 20rem;
+  width: 20rem;
   border-radius: 0.5rem;
   text-align: center;
-  overflow: hidden;
-  /* background-color: blueviolet; */
-  border: 0.1rem solid #426b1f;
 }
 
 .box-container {
@@ -30,6 +27,7 @@
   justify-content: center;
   margin-top: 95px;
 }
+
 .showPlaceContainer {
   display: flex;
   flex-direction: column;
@@ -108,42 +106,17 @@
   background-color: red;
 }
 
-/* ============> MAP */
-
-.showMap {
-  border: 0.1rem solid #426b1f;
-  display: flex;
-  flex-direction: column;
-  margin: 2rem 10%;
-  border-radius: 6px;
-}
-
-.showMapTitle {
-  font-size: 1.6rem;
-  color: #272727;
-  margin: 1.5rem 0;
-  text-align: start;
-  padding-left: 2rem;
-}
-
-.image-place img {
-  overflow: hidden;
-  height: 25rem;
-}
-
 .image-place img {
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 2px;
+  height: 15rem;
+  width: 15rem;
 }
 
 .content {
-  font-size: 2rem;
+  font-size: 1rem;
   color: black;
-  line-height: 2rem;
-  margin-top: 23px;
   display: flex;
-  justify-content: center;
-  gap: 5%;
 }
 
 /* ============> SECTION CRÉATION DE LIEUX <============ */

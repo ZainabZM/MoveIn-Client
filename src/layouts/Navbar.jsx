@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-// import Search from "../../components/search/Search";
+import Search from "../components/Search/Search";
 import { useState, useEffect } from "react";
 
-function Navbar() {
+function Navbar(props) {
   const [authenticated, setAuthenticated] = useState(false);
   const userId = localStorage.getItem("userId");
   const navigate = useNavigate();
@@ -25,6 +25,10 @@ function Navbar() {
     setAuthenticated(false);
   };
 
+  const handleSearchResults = (results) => {
+    props.handleSearchResults(results); // Call the handleSearchResults function passed from props
+  };
+
   return (
     <>
       <div className="header">
@@ -34,7 +38,9 @@ function Navbar() {
               MoveIN
             </Link>
           </div>
-          <div className="searchContainer">{/* <Search /> */}</div>
+          <div className="searchContainer">
+            <Search handleSearchResults={handleSearchResults} />
+          </div>
         </div>
 
         <input type="chexbox" id="check" />

@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import RenderPost from "../Post/RenderPost";
-import SearchBar from "../Search/SearchBar";
-
 import Navbar from "../../layouts/Navbar";
+import Post from "../Post/Post";
+import "./Home.css";
+import { Link } from "react-router-dom";
 
 function Home() {
-  const [value, setValue] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
-  const handleSearch = (searchValue) => {
-    // Update the state with the search value
-    setValue(searchValue);
+  // Function to handle search results
+  const handleSearchResults = (results) => {
+    setSearchResults(results);
   };
+  console.log("searchresults :", searchResults);
 
-  console.log(value);
   return (
     <>
       {/* SECTION HEADER - START */}
       <section className="homePage">
         <div className="navContainer">
           <div className="navbar">
-            <Navbar />
+            <Navbar handleSearchResults={handleSearchResults} />
           </div>
           <div className="filterNavContainer"></div>
         </div>
@@ -32,9 +33,29 @@ function Home() {
       {/* SECTION HEADER - END */}
 
       {/* SECTION AFFICHAGE LIEUX - START */}
-      <section className="RenderPlaces">
-        <SearchBar onSearch={handleSearch} />
-        <RenderPost />
+      <section className="renderPost">
+        {/* Conditionally render RenderPost based on search results */}
+        {searchResults.length > 0 ? (
+          searchResults.map((element, index) => {
+            const id = element.id;
+            return (
+              <div key={index}>
+                <ul>
+                  <Link to={`/articles/${id}`} state={element.id}>
+                    <Post
+                      title={element.title}
+                      file={element.file}
+                      brand={element.brand}
+                      price={element.price}
+                    />
+                  </Link>
+                </ul>
+              </div>
+            );
+          })
+        ) : (
+          <RenderPost />
+        )}
       </section>
       {/* SECTION AFFICHAGE LIEUX - END */}
     </>
