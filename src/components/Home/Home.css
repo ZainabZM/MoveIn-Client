@@ -4,21 +4,6 @@
   justify-content: center;
   align-items: center;
 }
-.navContainer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 9rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.navbar,
-.filterNavContainer {
-  height: 30%;
-  width: 100%;
-}
 
 /* ===========> PAGE HOME : VITRINE <=========== */
 
@@ -30,41 +15,35 @@
 }
 
 .showcase {
-  background-size: cover !important;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 21rem;
-  margin-top: 11rem;
-  color: white;
-  border-radius: 12px;
-  width: 95rem;
+  background-image: url("C:\Users\zeina\Desktop\MoveInClient\src\files\Vintage Landscape.jpg");
+  background-size: cover;
+  background-position: bottom; /* Center the background image vertically and horizontally */
+  height: 40vh;
+  width: 65%;
+  margin: 8rem auto;
+  border-radius: 2px;
   font-size: 2rem;
   text-transform: initial;
   padding-top: 3rem;
   overflow: hidden;
-  position: relative;
-}
-
-.showcase video {
-  background-size: cover !important;
-  min-width: 100%;
-  min-height: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
 }
 
 .showcase .caption {
   z-index: 1;
   position: relative;
   text-align: center;
-  color: #e5eee7;
-  font-size: 25px;
-  padding: 100px;
+  padding: 180px;
+  width: 460px;
+}
+
+.captionTitle {
+  color: rgb(77, 72, 72);
+  background-color: #e5eee7;
+  font-family: Roxborough;
+  font-size: 20px;
 }
 
 .renderPost {
   display: flex;
-  margin-top: 150px;
+  margin-top: 20px;
 }

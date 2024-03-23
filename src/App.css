@@ -14,12 +14,17 @@
 }
 
 @font-face {
+  font-family: "Open Sans Light";
+  src: url("C:\Users\zeina\Desktop\MoveInClient\src\fonts\open-sans-font-family-1710485463-0\OpenSans-Light.ttf");
+}
+
+@font-face {
   font-family: "Hattori Hanzo";
   src: url("C:\Users\zeina\Desktop\MoveInClient\src\fonts\hattori-hanzo-font-1710489441-0\hattori-hanzo.otf");
 }
 
 * {
-  font-family: "Open Sans";
+  font-family: Open Sans;
   padding: 0;
   margin: auto;
   outline: none;
@@ -28,7 +33,7 @@
 }
 
 body {
-  background-color: rgb(197, 186, 166);
+  background-color: rgb(238, 241, 244);
 }
 
 .card {

@@ -35,18 +35,13 @@ function Navbar(props) {
         <div className="boxLogo">
           <div className="logo">
             <Link to="/" className="logo">
-              MoveIN
+              Movein
             </Link>
           </div>
           <div className="searchContainer">
             <Search handleSearchResults={handleSearchResults} />
           </div>
         </div>
-
-        <input type="chexbox" id="check" />
-        <div className="fa-solid fa-xmark icons" id="close-menu"></div>
-        <div className="fa-solid fa-bars icons" id="icon-menu"></div>
-
         {authenticated ? (
           <nav>
             <div className="navbar">

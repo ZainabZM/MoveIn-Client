@@ -41,6 +41,7 @@ function RenderPost(props) {
           <ul>
             <Link to={`/articles/${id}`} state={element.id}>
               <Post
+                title={element.title}
                 file={element.file}
                 brand={element.brand}
                 price={element.price}
