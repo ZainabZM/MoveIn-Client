@@ -1,0 +1,81 @@
+.display {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.conversation-details {
+  max-width: 400px;
+}
+
+.message-container {
+  margin-bottom: 12px;
+}
+
+.message-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.sent-message-container {
+  align-items: flex-end;
+}
+
+.received-message-container {
+  align-items: flex-start;
+}
+
+.sent-message {
+  background-color: #e6e6e6; /* Change to grey for recipient */
+  border-radius: 16px;
+  padding: 12px 16px;
+  margin-left: auto; /* Adjusted margin for sent messages */
+  max-width: 70%; /* Adjusted maximum width for sent messages */
+}
+
+.received-message {
+  background-color: #dcf8c6; /* Change to green for sender */
+  border-radius: 16px;
+  padding: 12px 16px;
+  margin-right: auto; /* Adjusted margin for received messages */
+  max-width: 70%; /* Adjusted maximum width for received messages */
+}
+
+.message p {
+  margin: 0;
+}
+
+.message-time {
+  font-size: 0.8em; /* Reduced font size for message time */
+}
+
+.username-text {
+  color: #8f9091; /* Change to the desired color for the username */
+  font-size: 10px;
+}
+
+.message-sender {
+  color: #8f9091; /* Change to the desired color for the message time */
+  font-size: 10px;
+}
+
+.username {
+  color: #8f9091;
+  padding-bottom: 20px;
+}
+
+.user-banner img {
+  width: 30px;
+  border-radius: 2px;
+}
+
+.message-info {
+  display: flex;
+  justify-content: space-between;
+  width: 62px;
+  font-size: 12px;
+  color: #8f9091;
+  margin-left: 273px;
+}
