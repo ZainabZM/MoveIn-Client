@@ -1,53 +1,73 @@
-import { Link } from "react-router-dom";
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Render({ post, isFavorited, handleFavorite, handleDelete }) {
   if (!post) {
     return <div>Loading...</div>;
   }
+
   const userId = localStorage.getItem("userId");
+  const isAuthenticated = userId !== null;
+
+  // Function to handle adding to favorites
+  const handleAddToFavorites = () => {
+    // Check if user is authenticated
+    if (!isAuthenticated) {
+      // Redirect to login page
+      alert("Connectez-vous pour pouvoir ajouter cet article en favoris");
+      window.location.href = "/login";
+      return;
+    }
+
+    // User is authenticated, proceed with adding to favorites
+    handleFavorite();
+  };
+
   return (
     <div className="showPlaceContainer">
-      <div>
-        <h1 className="showTitle">{post.title}</h1>
+      <div className="imageContainer">
+        <img src={post.file} alt="Post" className="image" />
       </div>
-      <div>
-        <div className="showLocation">
-          <div className="adresse">
-            <p className="adresseInformation">{post.brand}, </p>
-            <p className="adresseInformation">{post.color}</p>
-            <p className="adresseInformation">{post.price}</p>
-            <p className="adresseInformation">{post.state}</p>
-          </div>
+      <div className="infoContainer">
+        <div className="price">
+          {post.price} €
+          <p>{parseFloat(post.price) + 1} € Protection acheteurs incluse</p>
         </div>
-      </div>
-      <div className="showContent">
-        <div className="showFile">
-          <img src={post.file} alt="Post" />
+        <div className="info">
+          <p>
+            <strong>Brand:</strong> {post.brand}
+          </p>
+          <p>
+            <strong>Color:</strong> {post.color}
+          </p>
+          <p>
+            <strong>State:</strong> {post.state}
+          </p>
         </div>
-        <div className="about">
-          <h2 className="aboutTitle">À Propos</h2>
-          <p className="aboutParagraphe">{post.description}</p>
+        <div className="description">
+          <h2>About</h2>
+          <p>{post.description}</p>
         </div>
-      </div>
-      <div>
-        <button className="button" onClick={handleFavorite}>
-          {isFavorited ? "Remove from Favorites" : "Add to Favorites"}
-        </button>
-        {userId == post.user_id && (
-          <>
-            <button className="button" onClick={handleDelete}>
-              Supprimer
-            </button>
-            <Link
-              to={`/articles/${post.id}/edit`}
-              state={post.id}
-              className="button"
-            >
-              Edit
+        <div className="buttonsContainer">
+          <button className="button" onClick={handleAddToFavorites}>
+            {isFavorited ? "Remove from Favorites" : "Add to Favorites"}
+          </button>
+          {isAuthenticated ? (
+            <Link to={`/checkout`} state={post.id}>
+              <button className="button">Buy Now</button>
             </Link>
-          </>
-        )}
+          ) : (
+            <button className="button">Login to Buy</button>
+          )}
+          {userId == post.user_id && isAuthenticated && (
+            <>
+              <button className="button" onClick={handleDelete}>
+                Delete
+              </button>
+              <button className="button">Edit</button>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

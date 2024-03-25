@@ -19,6 +19,7 @@ function Navbar(props) {
 
   const handleLogout = () => {
     localStorage.removeItem("@TokenUser");
+    localStorage.removeItem("userId");
     navigate("/");
     alert("Vous êtes déconnecté(e)");
     setAuthenticated(false);

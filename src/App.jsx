@@ -13,6 +13,7 @@ import "./App.css";
 import Sell from "./components/Profile/Sell";
 import Display from "./components/Message/Display";
 import ForgotPassword from "./components/Login/ForgotPassword";
+import Stripe from "./components/Stripe/StripeContainer";
 
 function App() {
   const router = createBrowserRouter([
@@ -59,6 +60,10 @@ function App() {
     {
       path: "/resetpassword",
       element: <ForgotPassword />,
+    },
+    {
+      path: "/checkout",
+      element: <Stripe />,
     },
   ]);
 

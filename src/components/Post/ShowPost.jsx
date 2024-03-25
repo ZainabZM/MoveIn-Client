@@ -4,6 +4,7 @@ import Navbar from "../../layouts/Navbar";
 import Render from "./RenderShow";
 
 function Show({ userId }) {
+  const [error, setError] = useState(null);
   const value = useLocation().state;
   console.log("Article ID:", value);
   const navigate = useNavigate();
