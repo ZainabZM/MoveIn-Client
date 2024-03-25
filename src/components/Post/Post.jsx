@@ -8,7 +8,7 @@ function Post(props) {
       </div>
       <div className="content">
         <p>{props.brand}</p>
-        <p>{props.price}</p>
+        <p>{props.price} € </p>
       </div>
     </div>
   );

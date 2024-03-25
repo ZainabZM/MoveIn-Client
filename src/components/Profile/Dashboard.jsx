@@ -6,11 +6,14 @@ import UserArticles from "./UserArticle";
 function Dashboard() {
   return (
     <>
-      <Navbar />
-
-      <Profile />
-      <CreatePost />
-      <UserArticles />
+      <div className="profil-nav">
+        <Navbar />
+      </div>
+      {/* <div className="info-cont">
+        <Profile />
+      </div>
+ 
+      <UserArticles /> */}
     </>
   );
 }

@@ -44,19 +44,9 @@ const Search = ({ handleSearchResults }) => {
         placeholder="Search..."
         value={query}
         onChange={handleChange}
+        className="searchContainer"
       />
       <button type="submit">Search</button>
-      {/* <ul>
-        {results.map((article) => (
-          <li key={article.id}>
-            <h3>{article.title}</h3>
-            <p>Brand: {article.brand}</p>
-            <p>Color: {article.color}</p>
-            <p>Price: ${article.price}</p>
-            <img src={article.file} alt={article.title} />
-          </li>
-        ))}
-      </ul> */}
     </form>
   );
 };

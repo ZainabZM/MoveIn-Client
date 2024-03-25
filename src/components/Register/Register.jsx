@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
 
@@ -52,13 +52,14 @@ function Register() {
   };
 
   return (
-    <div className="form">
-      <form method="POST">
+    <div className="register-container">
+      <h2 className="register-heading">Inscris-toi dès maintenant</h2>
+      <form className="register-form" method="POST">
         <input
           type="text"
           name="firstname"
           placeholder="Prénom"
-          className="inputRegister"
+          className="register-input"
           required
           onChange={(e) => setFirstname(e.target.value)}
         />
@@ -66,7 +67,7 @@ function Register() {
           type="text"
           name="lastname"
           placeholder="Nom de famille"
-          className="inputRegister"
+          className="register-input"
           required
           onChange={(e) => setLastname(e.target.value)}
         />
@@ -74,7 +75,7 @@ function Register() {
           type="text"
           name="username"
           placeholder="Pseudo"
-          className="inputRegister"
+          className="register-input"
           required
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -82,24 +83,29 @@ function Register() {
           type="email"
           name="email"
           placeholder="Adresse email"
-          className="inputRegister"
+          className="register-input"
           required
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           name="password"
-          className="inputRegister"
+          className="register-input"
           placeholder="Mot de passe"
           required
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type="submit" onClick={handleRegister}>
+        <button
+          type="submit"
+          onClick={handleRegister}
+          className="register-button"
+        >
           Inscription
         </button>
       </form>
     </div>
   );
 }
+
 export default Register;

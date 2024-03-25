@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 
 function Navbar(props) {
   const [authenticated, setAuthenticated] = useState(false);
+  const [showLinks, setShowLinks] = useState(true); // State to track the visibility of the links
   const userId = localStorage.getItem("userId");
   const navigate = useNavigate();
 
@@ -15,8 +16,6 @@ function Navbar(props) {
       setAuthenticated(true);
     }
   }, []);
-
-  console.log("userId:", userId);
 
   const handleLogout = () => {
     localStorage.removeItem("@TokenUser");
@@ -29,6 +28,22 @@ function Navbar(props) {
     props.handleSearchResults(results); // Call the handleSearchResults function passed from props
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 967) {
+        setShowLinks(false);
+      } else {
+        setShowLinks(true);
+      }
+    };
+
+    handleResize(); // Call handleResize on component mount
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <>
       <div className="header">
@@ -42,37 +57,48 @@ function Navbar(props) {
             <Search handleSearchResults={handleSearchResults} />
           </div>
         </div>
-        {authenticated ? (
-          <nav>
-            <div className="navbar">
-              <div className="navbarLink">
-                <Link to={`/profile`} className="Link">
-                  Profil
-                </Link>
-              </div>
-              <div className="navbarLink">
-                <Link className="btnLogOut" onClick={handleLogout}>
-                  Déconnexion
-                </Link>
-              </div>
-            </div>
-          </nav>
-        ) : (
-          <nav>
-            <div className="navbar">
-              <div className="navbarLink">
-                <Link to="/register" className="Link">
-                  Inscription
-                </Link>
-              </div>
-              <div className="navbarLink">
-                <Link to="/login" className="Link">
-                  Connexion
-                </Link>
-              </div>
-            </div>
-          </nav>
-        )}
+        <button id="burger-menu" onClick={() => setShowLinks(!showLinks)}>
+          ☰ {/* Burger menu icon */}
+        </button>
+        <nav>
+          <div
+            className={`navbar ${showLinks ? "show" : "hide"}`}
+            id="navLinks"
+          >
+            {authenticated ? (
+              <>
+                <div className="navbarLink">
+                  <Link to="/sell" className="Link">
+                    Vendre
+                  </Link>
+                </div>
+                <div className="navbarLink">
+                  <Link to={`/profile`} className="Link">
+                    Profil
+                  </Link>
+                </div>
+                <div className="navbarLink">
+                  <Link className="btnLogOut" onClick={handleLogout}>
+                    Déconnexion
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="navbarLink">
+                  <Link to="/register" className="Link">
+                    Inscription
+                  </Link>
+                </div>
+                <div className="navbarLink">
+                  <Link to="/login" className="Link">
+                    Connexion
+                  </Link>
+                </div>
+              </>
+            )}
+          </div>
+        </nav>
       </div>
     </>
   );

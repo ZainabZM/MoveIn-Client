@@ -1,6 +1,5 @@
 .filterContainer {
   height: 30px;
-  margin-top: 30px;
 }
 
 .filterContainer button {
@@ -9,4 +8,29 @@
   background-color: transparent;
   text-transform: uppercase;
   font-family: Roxborough;
+}
+
+.show {
+  display: flex; /* Show the filter options */
+}
+
+.hide {
+  display: none; /* Hide the filter options */
+}
+
+/* Media query for 768px and below */
+@media (max-width: 842px) {
+  /* .filterContainer {
+    margin-top: 30%;
+  } */
+  .burger-menu {
+    display: block; /* Display the burger menu icon */
+  }
+}
+
+/* Media query for above 768px */
+@media (min-width: 842px) {
+  .burger-menu {
+    display: none; /* Hide the burger menu icon */
+  }
 }

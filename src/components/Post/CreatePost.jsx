@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import "./RenderPost.css";
+import React, { useState, useEffect } from "react";
+import "./CreatePost.css";
 
 function CreatePost() {
   const [title, setTitle] = useState("");
@@ -9,7 +9,7 @@ function CreatePost() {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [file, setFile] = useState("");
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState("");
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -76,76 +76,108 @@ function CreatePost() {
       console.error("Fetch error:", error);
     }
   };
-
   return (
-    <div className="form">
-      <form method="POST" onSubmit={handlePost}>
-        <input
-          type="text"
-          name="title"
-          placeholder="Titre"
-          className="inputRegister"
-          required
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <input
-          type="text"
-          name="brand"
-          placeholder="Marque"
-          className="inputRegister"
-          required
-          onChange={(e) => setBrand(e.target.value)}
-        />
-        <input
-          type="text"
-          name="color"
-          placeholder="Couleur"
-          className="inputRegister"
-          required
-          onChange={(e) => setColor(e.target.value)}
-        />
-        <input
-          type="text"
-          name="state"
-          placeholder="Condition"
-          className="inputRegister"
-          required
-          onChange={(e) => setState(e.target.value)}
-        />
-        <input
-          type="text"
-          name="description"
-          className="inputRegister"
-          placeholder="Description"
-          required
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input
-          type="number"
-          name="price"
-          className="inputRegister"
-          placeholder="Prix"
-          required
-          onChange={(e) => setPrice(e.target.value)}
-        />
-        <select
-          name="category"
-          className="inputRegister"
-          placeholder="Catégorie"
-          required
-          onChange={(e) => setCategory(e.target.value)}
-          multiple
-        >
-          {categories.map((cat) => (
-            <option key={cat.id} value={cat.id}>
-              {cat.category}
-            </option>
-          ))}
-        </select>
-        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-        <button type="submit">Poster</button>
-      </form>
-    </div>
+    <>
+      <h2 className="post">Vendez votre article</h2>
+      <div className="create-box">
+        <form className="create-post-form" onSubmit={handlePost}>
+          <div className="big-white-div">
+            <div className="input-row">
+              <input
+                type="text"
+                name="title"
+                placeholder="Titre"
+                className="input-create-post"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                name="brand"
+                placeholder="Brand"
+                className="input-create-post"
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+                required
+              />
+            </div>
+            <div className="input-row">
+              <input
+                type="text"
+                name="color"
+                placeholder="Couleur"
+                className="input-create-post"
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                name="state"
+                placeholder="État"
+                className="input-create-post"
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+                required
+              />
+            </div>
+            <div className="input-row">
+              <input
+                type="number"
+                name="price"
+                placeholder="Prix"
+                className="input-create-post"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                required
+              />
+              <select
+                name="category"
+                className="input-create-post"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                required
+              >
+                <option value="" disabled selected>
+                  Sélectionner une catégorie
+                </option>
+                {categories.map((cat) => (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.category}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="input-row">
+              <textarea
+                name="description"
+                placeholder="Description"
+                className="input-create-post"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              />
+            </div>
+            <div className="input-row">
+              <input
+                type="file"
+                name="file"
+                className="input-create-post"
+                onChange={(e) => setFile(e.target.files[0])}
+                required
+              />
+            </div>
+          </div>
+          <div className="submit-btn">
+            <button type="submit" id="submit-btn">
+              Ajouter
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }
+
 export default CreatePost;

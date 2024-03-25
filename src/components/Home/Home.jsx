@@ -4,6 +4,7 @@ import Search from "../Search/Search";
 import Navbar from "../../layouts/Navbar";
 import Filter from "../Filter/Filter";
 import Post from "../Post/Post";
+import Footer from "../../layouts/Footer";
 import "./Home.css";
 import { Link } from "react-router-dom";
 
@@ -68,10 +69,24 @@ function Home() {
             </div>
           ))
         ) : searchResults.length > 0 ? (
-          <Search results={searchResults} />
+          searchResults.map((article, index) => (
+            <div key={index}>
+              <Link to={`/articles/${article.id}`} state={article.id}>
+                <Post
+                  title={article.title}
+                  file={article.file}
+                  brand={article.brand}
+                  price={article.price}
+                />
+              </Link>
+            </div>
+          ))
         ) : (
           <RenderPost />
         )}
+      </section>
+      <section className="footer">
+        <Footer />
       </section>
       {/* SECTION AFFICHAGE LIEUX - END */}
     </>

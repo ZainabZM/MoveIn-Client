@@ -1,0 +1,101 @@
+.create-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2%;
+}
+
+.create-post-form {
+  width: 50%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post {
+  color: #858c93;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 5%;
+}
+
+.input-create-post {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+textarea.input-create-post {
+  width: calc(100% - 10px);
+}
+
+.submit-btn {
+  text-align: center;
+}
+
+#submit-btn {
+  padding: 10px 20px;
+  background-color: #858c93;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.big-white-div {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.phrase {
+  margin-bottom: 10px;
+}
+
+.file {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-input {
+  display: none;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 1200px) {
+  .create-post-form {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .create-post-form {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .create-post-form {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .create-post-form {
+    width: 90%;
+  }
+
+  .input-create-post,
+  textarea.input-create-post {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
